@@ -10,6 +10,9 @@ const client = new Pool({
   user: DB_USER,
   password: DB_PASSWORD,
   database: DB_NAME,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 // Ready to export
