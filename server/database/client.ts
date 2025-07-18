@@ -1,16 +1,19 @@
 // Get variables from .env file for database connection
-const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME, NODE_ENV } =
-  process.env;
+const {
+  DB_HOST,
+  DB_PORT,
+  DB_USER,
+  DB_PASSWORD,
+  DB_NAME,
+  NODE_ENV,
+  DATABASE_URL,
+} = process.env;
 
 // Create a connection pool to the PostgreSQL database
 import { Pool } from "pg";
 
 const client = new Pool({
-  host: DB_HOST,
-  port: Number.parseInt(DB_PORT as string),
-  user: DB_USER,
-  password: DB_PASSWORD,
-  database: DB_NAME,
+  connectionString: DATABASE_URL,
   ssl: NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
 });
 
