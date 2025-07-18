@@ -16,7 +16,9 @@ import { Pool } from "pg";
 
 const client = new Pool({
   connectionString: DATABASE_URL,
-  ssl: NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
+  ssl: {
+    rejectUnauthorized: false, // Obligatoire avec Render (pas de certificat client valide)
+  },
 });
 
 // Ready to export
