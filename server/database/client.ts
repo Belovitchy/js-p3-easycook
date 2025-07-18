@@ -9,6 +9,8 @@ const {
   DATABASE_URL,
 } = process.env;
 
+console.log("DATABASE_URL:", DATABASE_URL);
+
 // Create a connection pool to the PostgreSQL database
 import { Pool } from "pg";
 
