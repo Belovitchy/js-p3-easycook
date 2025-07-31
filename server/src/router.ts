@@ -1,6 +1,6 @@
 import express from "express";
 import security from "./modules/middleware/checkToken";
-import securityAdmin from "./modules/middleware/checkTokenAdmin";
+
 const router = express.Router();
 import categoryActions from "./modules/category/categoryActions";
 import dietActions from "./modules/diet/dietActions";
@@ -16,7 +16,7 @@ import ustensilActions from "./modules/ustensil/ustensilActions";
 /* ************************************************************************* */
 // Mur Middleware Securité-------------------------
 router.use("/api/member", security.checkToken); // middleware pour les routes membres
-router.use("/api/admin", securityAdmin.checkTokenAdmin); // middleware pour les routes admin
+router.use("/api/admin", security.checkToken); // middleware pour les routes admin
 
 //Public Actions
 router.get("/api/unity", unityActions.browse);
